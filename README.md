@@ -382,21 +382,16 @@ local ESPMain = ESP:Button("ESP", "rbxassetid://7743875962")
 local ESPSection = ESPMain:Section("ESP", "Left")
 
 mainSection:Button({
-    Title = "Emotes",
-    ButtonName = "Unlock",
+    Title = "Protect void",
+    ButtonName = "Baseplate",
     },
     function(v)
-        for i,v in pairs(getgc(true)) do
-            if typeof(v) == "table" and rawget(v, "gamepassIdRequired") then
-                if v.gamepassIdRequired ==  "danceEmotes" then
-                    v.gamepassIdRequired = nil
-                elseif v.gamepassIdRequired == "toxicEmotes" then
-                    v.gamepassIdRequired = nil
-                elseif v.gamepassIdRequired == "respectEmotes" then
-                    v.gamepassIdRequired = nil
-                end
-            end
-        end
+        local baseplate = Instance.new("Part")
+        baseplate.Parent = workspace
+        baseplate.Size = Vector3.new(1000,0.5,1000)
+        baseplate.Anchored = true
+        baseplate.Name = "Baseplate"
+        baseplate.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0,-7,0)
     end
 )
 
@@ -527,7 +522,7 @@ mainSection:Toggle({
 
 mainSection:Toggle({
     Title = "No Fall Damage",
-    Default = false
+    Default = true
     },
     function(val)
         nofall = val
@@ -563,7 +558,7 @@ mainSection:Toggle({
 
 mainSection:Toggle({
     Title = "No Utility Damage",
-    Default = false
+    Default = true
     },
     function(val)
         antidamage = val
@@ -581,7 +576,7 @@ mainSection:Toggle({
 
 mainSection:Toggle({
     Title = "No Ragdoll",
-    Default = false
+    Default = true
     },
     function(val)
         for i,v in pairs(getgc(true)) do
@@ -916,8 +911,9 @@ CombatSilentaimSection:Toggle({
     function(val)
         for i,v2 in pairs(getgc(true)) do
             if val then
-                while task.wait(2) do
+                while task.wait(3) do
                     if Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("BottomStatusIndicators") then
+                        wait(0.2)
                         local player = game.Players.LocalPlayer
                         local character = player.Character or player.CharacterAdded:Wait()
                         local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
@@ -942,7 +938,7 @@ CombatSilentaimSection:Toggle({
 								    game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
 							    else
 								    local tween_s = game:service"TweenService"
-								    local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude/78.9, Enum.EasingStyle.Linear)
+								    local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude/75, Enum.EasingStyle.Linear)
 								    local tween, err = pcall(function()
 									    tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = gotoCFrame})
 									    tween:Play()
@@ -952,6 +948,13 @@ CombatSilentaimSection:Toggle({
 						    end
 						
 						    TP(CFrame.new(0.8385264873504639, -200.213294982910156, -33.203948974609375))
+                            wait(2)
+                            local baseplate = Instance.new("Part")
+                            baseplate.Parent = workspace
+                            baseplate.Size = Vector3.new(1000,0.5,1000)
+                            baseplate.Anchored = true
+                            baseplate.Name = "Baseplate"
+                            baseplate.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0,-7,0)
                         end
                     else
                         wait(2)
