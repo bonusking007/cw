@@ -362,7 +362,7 @@ pcall(function()
 end)
 
 local ui = loadstring(game:HttpGet('https://raw.githubusercontent.com/StepBroFurious/Script/main/HydraHubUi.lua'))()
-local window = ui.new("TUCKKY#NITTYA", Players.LocalPlayer.UserId, "ALPHA")
+local window = ui.new("TUCKKY&NITTYA", Players.LocalPlayer.UserId, "หีเงี่ยนควยใหญ่ๆ")
 local main = window:Category("Rage", "rbxassetid://7733965386")
 local player = window:Category("Player", "rbxassetid://7743875962")
 local Combat = window:Category("Combat", "rbxassetid://7743878358")
@@ -498,17 +498,8 @@ mainSection:Toggle({
     Default = false
     },
     function(val)
-        for i,v in pairs(getgc(true)) do
-            if typeof(v) == "table" and rawget(v, "getCanJump") then
-                local old = v.getCanJump
-                if val then
-                    v.getCanJump = function()
-                        return true
-                    end
-                else
-                    return old()
-                end
-            end
+        while wait(0.2) do
+            game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Space,false,game) 
         end
     end
 )
@@ -1436,7 +1427,7 @@ task.spawn(function()
     
 
 
-        if autospawn and Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("MainMenu") then
+        if autospawn then
             while wait(0.2) do
                 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Space,false,game) 
             end
@@ -1612,7 +1603,7 @@ end)
 local StarterGui = game:GetService("StarterGui")
 
 local Notifications = {
-	"Credits to Wiwatz",
+	"Credits to Wiwatz หำใหญ่",
 	
 }
 
@@ -1623,7 +1614,7 @@ while true do
 		local Notification = Notifications[i]
 		
 		StarterGui:SetCore("SendNotification", {
-			Title = "Wiwatz",
+			Title = "กุทำเองไอควาย",
 			Text = Notification,
 			Duration = 10
 		})
